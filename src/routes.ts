@@ -1,5 +1,4 @@
 import Router from "@koa/router";
-import axios from "axios";
 import fs from "fs";
 import * as yaml from "js-yaml";
 import bodyParser from "koa-bodyparser";

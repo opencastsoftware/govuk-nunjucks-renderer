@@ -33,7 +33,7 @@ export type ComponentSchema = {
   params: PropertySchema[];
 };
 
-const createParamSchema = (param: PropertySchema) : z.ZodTypeAny => {
+const createParamSchema = (param: PropertySchema): z.ZodTypeAny => {
   const paramType =
     param.type === "boolean"
       ? z.boolean()
@@ -66,9 +66,7 @@ const createObjectSchema = (params: PropertySchema[] | undefined) => {
   return objectShape.catchall(z.unknown());
 };
 
-const createArraySchema = (
-  params: PropertySchema[] | undefined
-) => {
+const createArraySchema = (params: PropertySchema[] | undefined) => {
   return params ? z.array(createObjectSchema(params)) : z.array(z.unknown());
 };
 
