@@ -55,7 +55,7 @@ jobs:
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: opencastsoftware/govuk-nunjucks-renderer
+          image: govuk-nunjucks-renderer
           tags: latest ${{ github.sha }} ${{ github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/v') && steps.get-tag.outputs.tag_version || '' }}
           labels: |
             org.opencontainers.image.created=${{ steps.get-timestamp.outputs.timestamp }}
