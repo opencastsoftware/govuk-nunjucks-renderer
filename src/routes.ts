@@ -64,10 +64,7 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
       ctx.body = result;
       return await next();
     } catch (err) {
-      if (axios.isAxiosError(err)) {
-        logger.error({ message: err, headers: err.response?.headers });
-        ctx.throw(500);
-      } else if (err instanceof ZodError) {
+      if (err instanceof ZodError) {
         ctx.throw(JSON.stringify(err.issues), 400);
       } else {
         logger.error(err);
