@@ -36,7 +36,7 @@ jobs:
         id: get-digest
         run: |
           podman pull node:${{ env.NODE_VERSION }}-alpine
-          DIGEST=podman images --filter=reference="node:${{ env.NODE_VERSION }}-alpine" --digests --format json | jq -r '.[0].Digest'
+          DIGEST=$(podman images --filter=reference="node:${{ env.NODE_VERSION }}-alpine" --digests --format json | jq -r '.[0].Digest')
           echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
 
       - name: Get tag version
