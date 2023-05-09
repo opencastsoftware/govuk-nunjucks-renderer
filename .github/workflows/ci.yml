@@ -73,7 +73,7 @@ jobs:
           registry: ghcr.io/opencastsoftware
           username: ${{ github.actor }}
           password: ${{ github.token }}
-          image: ${{ steps.build_image.outputs.image }}
+          image: ${{ steps.build_image.outputs.image-with-tag }}
           tags: ${{ steps.build_image.outputs.tags }}
 
       - name: Upload Coverage Report
