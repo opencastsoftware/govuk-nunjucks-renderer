@@ -1,0 +1,9 @@
+{
+  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/node18/tsconfig.json"],
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "sourceMap": true,
+    "useUnknownInCatchVariables": false
+  }
+}
