@@ -1,7 +1,7 @@
 ARG NODE_VERSION=latest
 
 LABEL org.opencontainers.image.source=https://github.com/opencastsoftware/govuk-nunjucks-renderer
-LABEL org.opencontainers.image.vendor=Opencast Software Europe Ltd
+LABEL org.opencontainers.image.vendor="Opencast Software Europe Ltd"
 LABEL org.opencontainers.image.licenses=MIT
 
 FROM node:${NODE_VERSION}-alpine AS build
