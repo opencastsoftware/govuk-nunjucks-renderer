@@ -42,7 +42,7 @@ The app features only one endpoint:
 
 * **Request Body**
 
-  A JSON (`application/json`) object corresponding to the parameters of the GOV.UK Design System component.
+  A JSON object corresponding to the parameters of the GOV.UK Design System component.
   
 * **Success Response**
 
@@ -78,7 +78,7 @@ The app features only one endpoint:
    
   * **Code**: 400
 
-    **Body**: A JSON (`application/json`) object describing the errors found when validating the request.
+    **Body**: A JSON array describing the errors found when validating the request. See the [zod](https://github.com/colinhacks/zod) documentation, especially [ZodIssue](https://github.com/colinhacks/zod/blob/master/ERROR_HANDLING.md#zodissue) for an explanation of the format of these errors.
     
     **Cause**:
     Requests are validated using the [zod](https://github.com/colinhacks/zod) validation library, with a schema derived from the component's parameter definitions.
