@@ -68,13 +68,13 @@ The app features only one endpoint:
 
     **Body**: empty
     
-    **Cause**: The requester *must* accept HTML. This is signified by the presence of an `Accept` header which contains the content type `text/html`.
+    **Cause**: The requester *must* accept HTML. This is signified by an `Accept` header which contains the content type `text/html`.
     
   * **Code**: 415
 
     **Body**: empty
    
-    **Cause**: The requester *must* provide a JSON POST body. This is signified by the `Content-Type` header, which contain the content type `application/json`.
+    **Cause**: The requester *must* provide a JSON POST body. This is signified by a `Content-Type` header which contains the content type `application/json`.
    
   * **Code**: 400
 
