@@ -43,7 +43,7 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
       const data = await zodSchema.parseAsync(ctx.request.body);
 
       const fileSystemLoader = new FileSystemLoader(
-        path.join(versionDir, `src/govuk/components/`)
+        path.join(versionDir, `src/govuk/`)
       );
 
       const env = new nunjucks.Environment(fileSystemLoader, {
@@ -51,7 +51,7 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
       });
 
       const result = await new Promise<string | null>((resolve, reject) => {
-        env.render(`${name}/template.njk`, data, (err, result) => {
+        env.render(`components/${name}/template.njk`, data, (err, result) => {
           if (err) {
             reject(err);
           } else {
