@@ -21,7 +21,7 @@ docker run -d -p 3000:3000 ghcr.io/opencastsoftware/govuk-nunjucks-renderer:late
 podman run -d -p 3000:3000 ghcr.io/opencastsoftware/govuk-nunjucks-renderer:latest
 ```
 
-When using podman you need to be logged into ghcr.io using a token with the ```read:packages``` scope.
+When using podman you need to be [logged into](https://docs.podman.io/en/latest/markdown/podman-login.1.html) ghcr.io [using a token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) with the ```read:packages``` scope.
 
 ## API
 
