@@ -38,7 +38,7 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
 
       const yamlData = yaml.load(schema) as ComponentSchema;
 
-      const zodSchema = createZodSchema(yamlData);
+      const zodSchema = createZodSchema(name, yamlData);
 
       const data = await zodSchema.parseAsync(ctx.request.body);
 

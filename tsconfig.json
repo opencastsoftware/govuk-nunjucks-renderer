@@ -4,6 +4,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "sourceMap": true,
+    "esModuleInterop": true,
     "useUnknownInCatchVariables": false
   }
 }

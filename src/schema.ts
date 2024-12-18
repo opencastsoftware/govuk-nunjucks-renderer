@@ -33,7 +33,10 @@ export type ComponentSchema = {
   params: PropertySchema[];
 };
 
-const createParamSchema = (param: PropertySchema): z.ZodTypeAny => {
+const createParamSchema = (
+  componentName: string,
+  param: PropertySchema
+): z.ZodTypeAny => {
   const paramType =
     param.type === "boolean"
       ? z.boolean()
@@ -44,30 +47,57 @@ const createParamSchema = (param: PropertySchema): z.ZodTypeAny => {
       : param.type === "nunjucks-block"
       ? z.string()
       : param.type === "array"
-      ? createArraySchema(param.params)
+      ? createArraySchema(componentName, param.params)
       : param.type === "object"
-      ? createObjectSchema(param.params)
+      ? createObjectSchema(componentName, param.params)
       : z.unknown();
+
+  // Work around the undeclared nested array in the table component
+  if (componentName === "table" && param.name === "rows" && param.params) {
+    return z.array(z.array(createObjectSchema(componentName, param.params)));
+  }
+
+  // Work around mutually exclusive text & html properties both being `required`
+  const textProps = /\b(?:\w*)[Tt]ext$/;
+  const htmlProps = /\b(?:\w*)[Hh]tml$/;
+  if (textProps.test(param.name) || htmlProps.test(param.name)) {
+    return z.optional(paramType);
+  }
 
   return param.required ? paramType : z.optional(paramType);
 };
 
-const createParamsSchema = (params: PropertySchema[]) => {
+const createParamsSchema = (
+  componentName: string,
+  params: PropertySchema[]
+) => {
   return z.object(
     Object.assign(
       {},
-      ...params.map((param) => ({ [param.name]: createParamSchema(param) }))
+      ...params.map((param) => ({
+        [param.name]: createParamSchema(componentName, param),
+      }))
     )
   );
 };
 
-const createObjectSchema = (params: PropertySchema[] | undefined) => {
-  const objectShape = params ? createParamsSchema(params) : z.object({});
+const createObjectSchema = (
+  componentName: string,
+  params: PropertySchema[] | undefined
+) => {
+  const objectShape = params
+    ? createParamsSchema(componentName, params)
+    : z.object({});
   return objectShape.catchall(z.unknown());
 };
 
-const createArraySchema = (params: PropertySchema[] | undefined) => {
-  return params ? z.array(createObjectSchema(params)) : z.array(z.unknown());
+const createArraySchema = (
+  componentName: string,
+  params: PropertySchema[] | undefined
+) => {
+  return params
+    ? z.array(createObjectSchema(componentName, params))
+    : z.array(z.unknown());
 };
 
 const preProcessSchema = (params: PropertySchema[]): PropertySchema[] => {
@@ -103,7 +133,7 @@ const preProcessSchema = (params: PropertySchema[]): PropertySchema[] => {
       });
 
       if (innerParams.length === 1 && innerParams[0]) {
-      // This is a singleton group
+        // This is a singleton group
         return innerParams[0];
       } else {
         // Create a synthetic object to hold the grouped parameters of this prefix
@@ -121,8 +151,11 @@ const preProcessSchema = (params: PropertySchema[]): PropertySchema[] => {
   return preProcessed;
 };
 
-export const createZodSchema = (data: ComponentSchema) => {
+export const createZodSchema = (
+  componentName: string,
+  data: ComponentSchema
+) => {
   return z.object({
-    params: createParamsSchema(preProcessSchema(data.params)),
+    params: createParamsSchema(componentName, preProcessSchema(data.params)),
   });
 };
