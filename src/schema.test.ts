@@ -2,7 +2,7 @@ import { createZodSchema } from "./schema";
 
 describe("createZodSchema", () => {
   describe("generating a schema for a component with no parameters", () => {
-    const schema = createZodSchema({ params: [] });
+    const schema = createZodSchema("component", { params: [] });
     it("should allow an empty parameter object", () => {
       const result = schema.safeParse({ params: {} });
       expect(result.success).toBeTruthy();
@@ -28,7 +28,8 @@ describe("createZodSchema", () => {
   });
 
   describe("generating a schema for an object with simple required parameters", () => {
-    const schema = createZodSchema({
+    const schema = createZodSchema("component", {
+
       params: [
         { name: "foo", type: "string", required: true },
         { name: "bar", type: "boolean", required: true },
@@ -88,7 +89,7 @@ describe("createZodSchema", () => {
   });
 
   describe("generating a schema for an object with simple optional parameters", () => {
-    const schema = createZodSchema({
+    const schema = createZodSchema("component", {
       params: [
         { name: "foo", type: "string", required: false },
         { name: "bar", type: "boolean", required: false },
@@ -155,7 +156,7 @@ describe("createZodSchema", () => {
   });
 
   describe("generating a schema for a component with an object parameter with no declared fields", () => {
-    const schema = createZodSchema({
+    const schema = createZodSchema("component", {
       params: [
         {
           name: "data",
@@ -192,7 +193,7 @@ describe("createZodSchema", () => {
   });
 
   describe("generating a schema for a component with an array parameter with no declared fields", () => {
-    const schema = createZodSchema({
+    const schema = createZodSchema("component", {
       params: [
         {
           name: "data",
@@ -224,7 +225,7 @@ describe("createZodSchema", () => {
   });
 
   describe("generating a schema for a component with a required object parameter", () => {
-    const schema = createZodSchema({
+    const schema = createZodSchema("component", {
       params: [
         {
           name: "data",
@@ -307,7 +308,7 @@ describe("createZodSchema", () => {
   });
 
   describe("generating a schema for a component with a required array parameter", () => {
-    const schema = createZodSchema({
+    const schema = createZodSchema("component", {
       params: [
         {
           name: "data",
