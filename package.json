@@ -29,7 +29,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@tsconfig/esm": "1.0.3",
+    "@tsconfig/esm": "1.0.5",
     "@tsconfig/node18": "2.0.0",
     "@tsconfig/recommended": "1.0.2",
     "@tsconfig/strictest": "2.0.1",
