@@ -7,7 +7,6 @@
   "packageRules": [
     {
       "matchDepNames": "node",
-      "matchDepTypes": "engines",
       "allowedVersions": "<19"
     },
     {
