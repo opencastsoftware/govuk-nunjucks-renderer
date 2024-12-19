@@ -3,5 +3,16 @@
   "extends": [
     "local>opencastsoftware/renovate-config",
     ":pinAllExceptPeerDependencies"
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": "node",
+      "matchDepTypes": "engines",
+      "allowedVersions": "<19"
+    },
+    {
+      "matchPackageNames": "@types/node",
+      "allowedVersions": "<19"
+    }
   ]
 }
