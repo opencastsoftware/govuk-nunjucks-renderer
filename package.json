@@ -17,7 +17,7 @@
   "dependencies": {
     "@koa/router": "12.0.2",
     "axios": "1.7.9",
-    "dotenv": "16.0.3",
+    "dotenv": "16.4.7",
     "isomorphic-git": "1.27.2",
     "js-yaml": "4.1.0",
     "koa": "2.15.3",
