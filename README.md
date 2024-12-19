@@ -3,7 +3,7 @@
 [![CI](https://github.com/opencastsoftware/govuk-nunjucks-renderer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/opencastsoftware/govuk-nunjucks-renderer/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/opencastsoftware/govuk-nunjucks-renderer/branch/main/graph/badge.svg?token=Gpph41PU7r)](https://codecov.io/gh/opencastsoftware/govuk-nunjucks-renderer)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://spdx.org/licenses/MIT.html)
-![Latest Release](https://img.shields.io/github/v/tag/opencastsoftware/govuk-nunjucks-renderer?label=latest)
+[![Latest Release](https://img.shields.io/github/v/tag/opencastsoftware/govuk-nunjucks-renderer?label=latest)](https://github.com/opencastsoftware/govuk-nunjucks-renderer/pkgs/container/govuk-nunjucks-renderer)
 
 This repository contains a Node.js web app for rendering [GOV.UK Frontend](https://frontend.design-system.service.gov.uk/) Nunjucks templates.
 
