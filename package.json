@@ -32,7 +32,7 @@
     "@tsconfig/esm": "1.0.5",
     "@tsconfig/node18": "2.0.1",
     "@tsconfig/recommended": "1.0.8",
-    "@tsconfig/strictest": "2.0.1",
+    "@tsconfig/strictest": "2.0.5",
     "@types/common-tags": "1.8.1",
     "@types/fs-extra": "11.0.1",
     "@types/jest": "29.5.14",
