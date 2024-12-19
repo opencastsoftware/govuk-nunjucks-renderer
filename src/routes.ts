@@ -4,6 +4,7 @@ import * as yaml from "js-yaml";
 import bodyParser from "koa-bodyparser";
 import nunjucks, { FileSystemLoader } from "nunjucks";
 import path from "path";
+import * as semver from "semver";
 import { ZodError } from "zod";
 import * as git from "./git";
 import logger from "./logger";
@@ -25,6 +26,9 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
   (tmpDir: string) => async (ctx, next) => {
     const version = ctx.params["version"] as string;
     const name = ctx.params["name"] as string;
+    const basePath = semver.gte("5.0.0", version)
+      ? "src/govuk"
+      : "packages/govuk-frontend/src/govuk";
 
     try {
       const versionDir = path.join(tmpDir, version);
@@ -32,7 +36,7 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
       await git.cloneRepo(versionDir, version);
 
       const schema = await fs.promises.readFile(
-        path.join(versionDir, `src/govuk/components/${name}/${name}.yaml`),
+        path.join(versionDir, `${basePath}/components/${name}/${name}.yaml`),
         { encoding: "utf-8" }
       );
 
@@ -43,7 +47,7 @@ const postComponentsRoute: (tmpDir: string) => Router.Middleware =
       const data = await zodSchema.parseAsync(ctx.request.body);
 
       const fileSystemLoader = new FileSystemLoader(
-        path.join(versionDir, `src/govuk/`)
+        path.join(versionDir, basePath)
       );
 
       const env = new nunjucks.Environment(fileSystemLoader, {

@@ -24,6 +24,7 @@
     "koa-bodyparser": "^4.4.0",
     "koa-logger": "^3.2.1",
     "nunjucks": "^3.2.4",
+    "semver": "^7.6.3",
     "winston": "^3.8.2",
     "zod": "^3.21.4"
   },
