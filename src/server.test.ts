@@ -1,12 +1,13 @@
 import { stripIndent } from "common-tags";
 import http from "http";
-import supertest, { SuperTest } from "supertest";
+import supertest from "supertest";
+import TestAgent from "supertest/lib/agent";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createServer } from "./server";
 import { createTmpDir } from "./tmpdir";
 
 let server: http.Server;
-let request: SuperTest<supertest.Test>;
+let request: TestAgent;
 
 beforeAll(async () => {
   const tmpDir = await createTmpDir();

@@ -2,6 +2,7 @@
   "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/node18/tsconfig.json"],
   "include": ["src/**/*"],
   "compilerOptions": {
+    "module": "commonjs",
     "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true,
