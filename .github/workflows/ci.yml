@@ -40,7 +40,7 @@ jobs:
         run: npm run build
 
       - name: Test
-        run: npm run test -- --ci --coverage --reporters=default --reporters=jest-junit
+        run: npm run test -- --coverage
 
       - name: Get base image digest
         id: get-digest
