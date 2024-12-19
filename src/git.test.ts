@@ -22,7 +22,7 @@ describe("cloneRepo", () => {
   it(
     "should clone the repo if it doesn't already exist",
     () =>
-      withTmpDir("4.5.0", async (version, tmpDir) => {
+      withTmpDir("4.9.0", async (version, tmpDir) => {
         const mainTemplate = path.join(tmpDir, "src", "govuk", "template.njk");
         expect(fsSync.existsSync(mainTemplate)).toBeFalsy();
         await git.cloneRepo(tmpDir, version);
@@ -32,7 +32,7 @@ describe("cloneRepo", () => {
   );
 
   it("should not clone the repo if it already exists", () =>
-    withTmpDir("4.5.0", async (_version, tmpDir) => {
+    withTmpDir("4.9.0", async (_version, tmpDir) => {
       const govukDir = path.join(tmpDir, "src", "govuk");
       const gitDir = path.join(tmpDir, ".git");
       const mainTemplate = path.join(govukDir, "template.njk");
