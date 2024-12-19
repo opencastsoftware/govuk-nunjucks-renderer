@@ -15,7 +15,7 @@
   "author": "Opencast Software Europe Ltd",
   "license": "MIT",
   "dependencies": {
-    "@koa/router": "12.0.2",
+    "@koa/router": "13.1.0",
     "axios": "1.7.9",
     "dotenv": "16.4.7",
     "isomorphic-git": "1.27.2",
