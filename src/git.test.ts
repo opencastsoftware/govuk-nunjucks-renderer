@@ -1,12 +1,13 @@
 import * as fsSync from "fs";
 import fs from "fs/promises";
 import path from "path";
+import { describe, expect, it } from "vitest";
 import * as git from "./git";
 import { createTmpDir } from "./tmpdir";
 
 const withTmpDir = async (
   version: string,
-  test: (version: string, versionDir: string) => Promise<void>
+  test: (version: string, versionDir: string) => Promise<void>,
 ) => {
   const tmpDir = await createTmpDir();
   const versionDir = path.join(tmpDir, version);
@@ -27,7 +28,7 @@ describe("cloneRepo", () => {
         await git.cloneRepo(tmpDir, version);
         expect(fsSync.existsSync(mainTemplate)).toBeTruthy();
       }),
-    10000
+    10000,
   );
 
   it("should not clone the repo if it already exists", () =>

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { createZodSchema } from "./schema";
 
 describe("createZodSchema", () => {
@@ -29,7 +30,6 @@ describe("createZodSchema", () => {
 
   describe("generating a schema for an object with simple required parameters", () => {
     const schema = createZodSchema("component", {
-
       params: [
         { name: "foo", type: "string", required: true },
         { name: "bar", type: "boolean", required: true },

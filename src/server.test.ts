@@ -1,6 +1,7 @@
 import { stripIndent } from "common-tags";
 import http from "http";
 import supertest, { SuperTest } from "supertest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createServer } from "./server";
 import { createTmpDir } from "./tmpdir";
 
@@ -13,8 +14,10 @@ beforeAll(async () => {
   request = supertest(server);
 });
 
-afterAll((done) => {
-  server.close(done);
+afterAll(async () => {
+  new Promise<void>((resolve, reject) => {
+    server.close((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 describe("Nunjucks renderer app", () => {
