@@ -20,7 +20,7 @@
   "dependencies": {
     "@koa/router": "13.1.0",
     "dotenv": "16.4.7",
-    "isomorphic-git": "1.27.3",
+    "isomorphic-git": "1.29.0",
     "js-yaml": "4.1.0",
     "koa": "2.15.3",
     "koa-bodyparser": "4.4.1",
