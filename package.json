@@ -22,7 +22,7 @@
     "dotenv": "16.4.7",
     "isomorphic-git": "1.29.0",
     "js-yaml": "4.1.0",
-    "koa": "2.15.3",
+    "koa": "2.15.4",
     "koa-bodyparser": "4.4.1",
     "koa-logger": "3.2.1",
     "nunjucks": "3.2.4",
