@@ -52,7 +52,7 @@
     "prettier": "3.5.3",
     "supertest": "7.1.0",
     "typescript": "5.8.2",
-    "typescript-eslint": "8.27.0",
+    "typescript-eslint": "8.28.0",
     "vitest": "2.1.8"
   }
 }
