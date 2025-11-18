@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@koa/router": "13.1.1",
-    "dotenv": "16.6.1",
+    "dotenv": "17.2.3",
     "isomorphic-git": "1.32.2",
     "js-yaml": "4.1.1",
     "koa": "2.16.3",
