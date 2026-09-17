@@ -63,7 +63,7 @@ jobs:
 
       - name: Build container image
         id: build-image
-        uses: redhat-actions/buildah-build@7a95fa7ee0f02d552a32753e7414641a04307056 # v2
+        uses: redhat-actions/buildah-build@9dc2ade9b5db229966b5025ae266311e12f349c4 # v2
         with:
           image: govuk-nunjucks-renderer
           tags: latest ${{ github.sha }} ${{ github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/v') && steps.get-tag.outputs.tag-version || '' }}
